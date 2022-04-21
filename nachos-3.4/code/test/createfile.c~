@@ -1,0 +1,16 @@
+#include "syscall.h"
+
+int main()
+{
+    char filename[256];
+    PrintString("Nhap ten file: ");
+    ReadString(filename, 256);
+
+    Create(filename) == 
+       // PrintString("Can not create file ");
+    //else
+      //  PrintString("Tao file thanh cong\n");
+
+    return 0;
+}
+
