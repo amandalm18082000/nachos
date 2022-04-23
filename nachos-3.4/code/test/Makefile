@@ -35,7 +35,7 @@ CPP = gcc -E
 INCDIR =-I../userprog -I../threads
 CFLAGS = -G 0 -c $(INCDIR)
 
-all: halt shell matmult sort string help char test bubblesort ascii delete cat copy createfile
+all: halt shell matmult sort string help char test bubblesort ascii delete cat copy createfile concatenate
 
 start.o: start.s ../userprog/syscall.h
 	$(CPP) $(CPPFLAGS) start.c > strt.s
@@ -137,4 +137,14 @@ createfile: createfile.o start.o
 	$(LD) $(LDFLAGS) start.o createfile.o -o createfile.coff
 
 	../bin/coff2noff createfile.coff createfile
+
+concatenate.o: concatenate.c
+
+	$(CC) $(CFLAGS) -c concatenate.c
+
+concatenate: concatenate.o start.o
+
+	$(LD) $(LDFLAGS) start.o concatenate.o -o concatenate.coff
+
+	../bin/coff2noff concatenate.coff concatenate
 
